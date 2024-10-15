@@ -10,7 +10,7 @@ class Table {
 
         // Dodajemy domyślne komórki do każdego z istniejących wierszy
         for (List<Cell<?>> row : rows) {
-            row.add(header.createDefaultCell());  // Tworzymy komórkę za pomocą nagłówka
+            row.add(header.createDefaultCell());
         }
     }
 

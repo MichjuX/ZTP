@@ -2,16 +2,15 @@ public class Ztp02 {
     public static void main(String[] args) {
         Table table = new Table();
 
-        // Dodajemy kolumny z automatycznym rozpoznawaniem typu
-        table.addColumn("Name", "Alice");  // Nagłówek tekstowy
-        table.addColumn("Age", 30);        // Nagłówek liczbowy
-        table.addColumn("Active", true);   // Nagłówek logiczny
+        // Automatyczne rozpoznawanie typu przy dodawaniu kolumn
+        table.addColumn("Name", "Alice");
+        table.addColumn("Age", 30);
+        table.addColumn("Active", true);
 
         // Dodawanie wierszy z danymi
         table.addRow("Alice", 30, true);
         table.addRow("Bob", 25, false);
 
-        // Wyświetlenie tabeli
-        System.out.println(table);
+        System.out.println(table); // Pytanie: jak z tym .toString()?
     }
 }
