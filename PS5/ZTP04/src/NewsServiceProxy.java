@@ -17,7 +17,7 @@ class NewsServiceProxy implements INewsService {
             return new Response("Error", "Access denied.");
         }
         Response response = newsService.addMessage(title, content);
-        cache.clear(); // Clear entire cache on add
+        cache.clear();
         return response;
     }
 
@@ -29,7 +29,7 @@ class NewsServiceProxy implements INewsService {
         }
         Response response = newsService.readMessage(id);
         if (response.getStatus().equals("Success")) {
-            cache.put(id, response); // Cache the result
+            cache.put(id, response);
         }
         return response;
     }
@@ -40,7 +40,7 @@ class NewsServiceProxy implements INewsService {
             return new Response("Error", "Access denied.");
         }
         Response response = newsService.editMessage(id, newContent);
-        cache.remove(id); // Clear specific cache entry on edit
+        cache.remove(id);
         return response;
     }
 
@@ -50,7 +50,7 @@ class NewsServiceProxy implements INewsService {
             return new Response("Error", "Access denied.");
         }
         Response response = newsService.deleteMessage(id);
-        cache.remove(id); // Clear specific cache entry on delete
+        cache.remove(id);
         return response;
     }
 }

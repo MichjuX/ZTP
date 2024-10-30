@@ -3,21 +3,24 @@ public class Ztp04P {
         NewsService realService = new NewsService();
         User adminUser = new User("Alice", UserRole.ADMIN);
         INewsService proxyService = new NewsServiceProxy(realService, adminUser);
+        User guestUser = new User("Bob", UserRole.GUEST);
+        INewsService proxyService2 = new NewsServiceProxy(realService, guestUser);
 
-        // Adding messages
         System.out.println(proxyService.addMessage("Breaking News", "Major update in software."));
         System.out.println(proxyService.addMessage("Market Update", "Stocks hit record highs."));
 
-        // Reading a message (first time - uncached)
+        // Nie powinien cache
         System.out.println(proxyService.readMessage(1));
 
-        // Reading the same message (should be cached)
+        // Powinien brać z cache
         System.out.println(proxyService.readMessage(1));
 
-        // Editing the message (cache should be cleared for ID 1)
+        // Cache powinien sie wyczyscic na id 1
         System.out.println(proxyService.editMessage(1, "Updated content for breaking news."));
 
-        // Reading the message after edit (uncached again)
+        // Powinno nie być cache
         System.out.println(proxyService.readMessage(1));
+
+        System.out.println(proxyService2.deleteMessage(1));
     }
 }
