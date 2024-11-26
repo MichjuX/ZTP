@@ -37,7 +37,6 @@ public class Ztp08 {
                     commandManager.replay(board);
                     break;
                 default:
-                    // Zakładamy format ruchu: "e2 e4"
                     String[] parts = input.split(" ");
                     if (parts.length != 2) {
                         System.out.println("Nieprawidłowy format. Użyj formatu 'e2 e4'.");
